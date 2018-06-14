@@ -7,7 +7,7 @@ namespace XUnitTestCleanCodeLabb1
     public class UnitTest1
     {
         [Fact]
-        public void DepositIncrementBalance()
+        public void DepositShouldIncreaseBalance()
         {
             Account account = new Account(200.00);
 
@@ -63,7 +63,7 @@ namespace XUnitTestCleanCodeLabb1
         }
 
         [Fact]
-        public void WithdrawDecreaseBalance()
+        public void WithdrawShouldDecreaseBalance()
         {
             Account account = new Account(200.00);
 
