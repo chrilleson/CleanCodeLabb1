@@ -4,8 +4,9 @@ using Xunit;
 
 namespace XUnitTestCleanCodeLabb1
 {
-    public class UnitTest1
+    public class AccountTest
     {
+
         #region Account
         [Theory]
         [InlineData(-200.00)]
@@ -13,7 +14,7 @@ namespace XUnitTestCleanCodeLabb1
         [InlineData(double.NaN)]
         [InlineData(double.PositiveInfinity)]
         [InlineData(double.NegativeInfinity)]
-        public void Account_ShouldThrowException(double initialBalance)
+        public void Constructor_ShouldThrowForInalidValuesForBalance(double initialBalance)
         {
             Assert.Throws<Exception>(() =>
             {
@@ -37,7 +38,7 @@ namespace XUnitTestCleanCodeLabb1
         [InlineData(double.NaN)]
         [InlineData(double.PositiveInfinity)]
         [InlineData(double.NegativeInfinity)]
-        public void Deposit_ShouldThrowExceptions(double amount)
+        public void Deposit_ShouldThrowForInvalidValues(double amount)
         {
             Account account = new Account(200.00);
 
@@ -52,6 +53,7 @@ namespace XUnitTestCleanCodeLabb1
         [Fact]
         public void Deposit_ShouldBeSuccessful()
         {
+//            const double intiialBalance = 200;
             Account account = new Account(200.00);
 
             double deposit = 50.00;
@@ -172,96 +174,5 @@ namespace XUnitTestCleanCodeLabb1
 
         #endregion
 
-
-        /*
-         * 
-         * 
-        [Fact]
-        public void TransferShouldWithdrawFromAccountIfSuccessful()
-        {
-            Account account = new Account(200.00);
-            Account savingsAccount = new Account(1000);
-
-            double amount = 100;
-            account.Transfer(savingsAccount, amount);
-            double actualBalance = account.Balance;
-            double expectedBalance = 100;
-            Assert.Equal(expectedBalance, actualBalance);
-        }
-
-        [Fact]
-        public void TransferShouldThrowIfAmountToTransferIsNegative()
-        {
-            Account account = new Account(200.00);
-            Account savingsAccount = new Account(50);
-
-            Assert.Throws<Exception>(() =>
-            {
-                account.Transfer(savingsAccount, -1);
-            });
-        }
-
-        [Fact]
-        public void TransferShouldThrowIfTransferingToSameAccount()
-        {
-            Account account = new Account(200.00);
-
-            Assert.Throws<Exception>(() =>
-            {
-                account.Transfer(account, 5);
-            });
-        }
-
-        [Fact]
-        public void TransferShouldThrowIfNull()
-        {
-            Account account = new Account(200.00);
-            Account savingsAccount = new Account(50);
-
-            Assert.Throws<Exception>(() =>
-            {
-                account.Transfer(null, 0);
-            });
-        }
-
-        [Fact]
-        public void TransferShouldThrowIfNaN()
-        {
-            Account account = new Account(200.00);
-            Account savingsAccount = new Account(50);
-
-            Assert.Throws<Exception>(() =>
-            {
-                account.Transfer(savingsAccount, double.NaN);
-            });
-        }
-
-        [Fact]
-        public void TransferShouldThrowIfPositiveInfinity()
-        {
-            Account account = new Account(200.00);
-            Account savingsAccount = new Account(50);
-
-            Assert.Throws<Exception>(() =>
-            {
-                account.Transfer(savingsAccount, double.PositiveInfinity);
-            });
-        }
-
-        [Fact]
-        public void TransferShouldThrowIfNegativeInfinity()
-        {
-            Account account = new Account(200.00);
-            Account savingsAccount = new Account(50);
-
-            Assert.Throws<Exception>(() =>
-            {
-                account.Transfer(savingsAccount, double.NegativeInfinity);
-            });
-        }
-        *
-        * 
-        * 
-        */
     }
 }
